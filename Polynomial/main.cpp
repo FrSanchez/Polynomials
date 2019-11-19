@@ -16,7 +16,7 @@ void printEq(Polynomial &p1, Polynomial& p2)
     cout << "P1 == P2? " << ((p1 == p2) ? "true": "false") << std::endl;
 }
 
-int main(int argc, const char * argv[]) {
+int foo(int argc, const char * argv[]) {
     
     Polynomial *p1 = new Polynomial();
     p1->changeCoefficient(4, 2);

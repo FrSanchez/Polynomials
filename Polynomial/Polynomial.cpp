@@ -11,20 +11,29 @@
 
 Polynomial::Polynomial()
 {
+    init();
+}
+
+Polynomial::~Polynomial()
+{
+    clear();
+}
+
+void Polynomial::init()
+{
     head = new Term(0, 0);
     head->setNext(head);
     head->setPrev(head);
 }
 
-Polynomial::~Polynomial()
+void Polynomial::clear()
 {
-    Term* pos = head->getNext();
-    Term* first=pos;
+    Term* pos = head;
     do {
         Term *t = pos;
         pos = pos->getNext();
         delete t;
-    } while(pos != first);
+    } while(pos != head);
 }
 
 Polynomial::Polynomial(const Polynomial &o) : Polynomial()
@@ -70,6 +79,8 @@ bool Polynomial::remove(Term *pos)
         next->setPrev(prev);
         delete pos;
         return true;
+    } else {
+        head->setCoefficient(0.0);
     }
     return false;
 }
@@ -128,6 +139,8 @@ Term* moveAndCopy(Polynomial &result, Term* one, Term* two)
     return one;
 }
 
+
+
 Polynomial Polynomial::operator*(const Polynomial& rhs)
 {
     Polynomial result;
@@ -148,6 +161,15 @@ Polynomial Polynomial::operator*(const Polynomial& rhs)
         left = left->getNext();
     } while(left != left1);
     return result;
+}
+
+Polynomial Polynomial::operator*=(const Polynomial& rhs)
+{
+    Polynomial res = *this * rhs;
+    clear();
+    head = res.head;
+    res.init();
+    return *this;
 }
 
 Polynomial Polynomial::operator+=(const Polynomial& rhs)
@@ -202,17 +224,18 @@ std::ostream& operator<<(std::ostream &os, const Polynomial &o)
     Term* high = current;
     bool first = true;
     do {
-        os << ' ';
-        if (!first) {
-            if(current->getCoefficient() >0 ) {
-                os << '+';
+        if (current->getCoefficient() != 0.0) {
+            os << ' ';
+            if (!first) {
+                if(current->getCoefficient() >0 ) {
+                    os << '+';
+                }
             }
+            os << *current;
+            first = false;
         }
-        os << *current;
-        first = false;
         current = current->getNext();
     } while(current != high);
-    os << std::endl;
     return os;
 }
 

@@ -14,6 +14,7 @@
 class Term
 {
 public:
+    Term() ;
     Term(double, int);
 
     double getCoefficient() { return coefficient; }

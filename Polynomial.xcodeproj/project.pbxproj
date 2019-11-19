@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C5E52072383BAFB001247F1 /* poly_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E52062383BAFB001247F1 /* poly_tests.cpp */; };
 		8CDA618F2383057C00ADF527 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA618E2383057C00ADF527 /* main.cpp */; };
 		8CDA61972383058F00ADF527 /* Term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA61952383058F00ADF527 /* Term.cpp */; };
 		8CDA619A238305B700ADF527 /* Polynomial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA6198238305B700ADF527 /* Polynomial.cpp */; };
+		8CDA619E2383714600ADF527 /* test_term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA619D2383714600ADF527 /* test_term.cpp */; };
+		8CDA61A02383725600ADF527 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA619F2383725600ADF527 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,12 +28,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C5E52062383BAFB001247F1 /* poly_tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = poly_tests.cpp; sourceTree = "<group>"; };
 		8CDA618B2383057C00ADF527 /* Polynomial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Polynomial; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CDA618E2383057C00ADF527 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8CDA61952383058F00ADF527 /* Term.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Term.cpp; sourceTree = "<group>"; };
 		8CDA61962383058F00ADF527 /* Term.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Term.hpp; sourceTree = "<group>"; };
 		8CDA6198238305B700ADF527 /* Polynomial.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Polynomial.cpp; sourceTree = "<group>"; };
 		8CDA6199238305B700ADF527 /* Polynomial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Polynomial.hpp; sourceTree = "<group>"; };
+		8CDA619C2383712D00ADF527 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		8CDA619D2383714600ADF527 /* test_term.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_term.cpp; sourceTree = "<group>"; };
+		8CDA619F2383725600ADF527 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 		8CDA61822383057C00ADF527 = {
 			isa = PBXGroup;
 			children = (
+				8CDA619B23836F7900ADF527 /* Tests */,
 				8CDA618D2383057C00ADF527 /* Polynomial */,
 				8CDA618C2383057C00ADF527 /* Products */,
 			);
@@ -70,6 +78,17 @@
 				8CDA6199238305B700ADF527 /* Polynomial.hpp */,
 			);
 			path = Polynomial;
+			sourceTree = "<group>";
+		};
+		8CDA619B23836F7900ADF527 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA619C2383712D00ADF527 /* catch.hpp */,
+				8CDA619D2383714600ADF527 /* test_term.cpp */,
+				8CDA619F2383725600ADF527 /* main.cpp */,
+				8C5E52062383BAFB001247F1 /* poly_tests.cpp */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +148,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CDA619E2383714600ADF527 /* test_term.cpp in Sources */,
 				8CDA618F2383057C00ADF527 /* main.cpp in Sources */,
 				8CDA61972383058F00ADF527 /* Term.cpp in Sources */,
+				8CDA61A02383725600ADF527 /* main.cpp in Sources */,
 				8CDA619A238305B700ADF527 /* Polynomial.cpp in Sources */,
+				8C5E52072383BAFB001247F1 /* poly_tests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

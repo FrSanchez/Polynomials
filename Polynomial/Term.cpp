@@ -8,6 +8,11 @@
 
 #include "Term.hpp"
 
+Term::Term() : Term(0,0)
+{
+    
+}
+
 Term::Term(double coeff, int pwr)
 {
     coefficient = coeff;
