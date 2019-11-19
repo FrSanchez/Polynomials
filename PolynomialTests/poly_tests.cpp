@@ -65,7 +65,7 @@ TEST_CASE("Testing plynomial") {
         CHECK(ss.str() == " 10x^3 +10");
     }
     
-    SECTION("+") {
+    SECTION("two monomials") {
         p1.changeCoefficient(5, 2);
         Polynomial p2;
         p2.changeCoefficient(10, 2);
@@ -75,7 +75,7 @@ TEST_CASE("Testing plynomial") {
         CHECK(ss.str() == " 15x^2");
     }
 
-    SECTION("+") {
+    SECTION("two monomials diff sign") {
         p1.changeCoefficient(5, 2);
         Polynomial p2;
         p2.changeCoefficient(-10, 2);
@@ -85,7 +85,7 @@ TEST_CASE("Testing plynomial") {
         CHECK(ss.str() == " -5x^2");
     }
     
-    SECTION("+") {
+    SECTION("binomial + monomial") {
         p1.changeCoefficient(-5, 2);
         Polynomial p2;
         p2.changeCoefficient(10, 2);
@@ -96,7 +96,7 @@ TEST_CASE("Testing plynomial") {
         CHECK(ss.str() == " 22x^3 +5x^2");
     }
     
-    SECTION( "+") {
+    SECTION( "monomial + binomial") {
         p1.changeCoefficient(-5, 4);
         Polynomial p2;
         p2.changeCoefficient(10, 2);
@@ -105,8 +105,18 @@ TEST_CASE("Testing plynomial") {
         ss << p1;
         CHECK(ss.str() == " -5x^4 +10x^2 +20");
     }
-    
-    SECTION("*") {
+
+    SECTION( "p3 = p1 + p2") {
+        p1.changeCoefficient(-5, 4);
+        Polynomial p2;
+        p2.changeCoefficient(10, 2);
+        p2.changeCoefficient(20, 0);
+        Polynomial p3 = p1 + p2;
+        ss << p3;
+        CHECK(ss.str() == " -5x^4 +10x^2 +20");
+    }
+
+    SECTION("p1 * p2") {
         p1.changeCoefficient(-5, 4);
         p1.changeCoefficient(1, 2);
         Polynomial p2;
@@ -139,5 +149,21 @@ TEST_CASE("Testing plynomial") {
         ss << p2;
         CHECK(ss.str() == " 2x +5");
 
+    }
+    
+    SECTION("*") {
+        p1.changeCoefficient(2, 1);
+        p1.changeCoefficient(5, 0);
+        p1*=10.0;
+        ss << p1;
+        CHECK(ss.str() == " 20x +50");
+    }
+
+    SECTION("*0") {
+        p1.changeCoefficient(2, 1);
+        p1.changeCoefficient(5, 0);
+        p1*=0.0;
+        ss << p1;
+        CHECK(ss.str() == "");
     }
 }
