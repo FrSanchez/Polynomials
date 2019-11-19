@@ -33,6 +33,7 @@ public:
     
     friend std::ostream& operator<<(std::ostream &os, const Polynomial &o);
     friend bool operator==(const Polynomial &p1, const Polynomial &p2);
+    friend bool operator!=(const Polynomial &p1, const Polynomial &p2);
 private:
     Term* head;
     bool insert(Term* pos, double coefficient, int power);

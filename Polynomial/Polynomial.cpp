@@ -113,17 +113,20 @@ bool Polynomial::changeCoefficient(double coefficient, int power)
     return false;
 }
 
+bool operator!=(const Polynomial &p1, const Polynomial &p2)
+{
+    return !operator==(p1, p2);
+}
+
 bool operator==(const Polynomial &p1, const Polynomial &p2)
 {
-    Term* left = p1.head->getNext();
-    Term* right = p2.head->getNext();
-    Term* left1 = left;
-    Term* right1 = right;
+    Term* left = p1.head;
+    Term* right = p2.head;
     
     while(*left == *right) {
         left = left->getNext();
         right = right->getNext();
-        if (left == left1 && right == right1) {
+        if (left == p1.head && right == p2.head) {
             return true;
         }
     }

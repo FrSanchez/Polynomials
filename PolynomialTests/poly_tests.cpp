@@ -17,6 +17,30 @@ TEST_CASE("Testing plynomial") {
     Polynomial p1;
     std::stringstream ss;
     
+    SECTION("term equals number") {
+        p1.changeCoefficient(10, 0 );
+        Polynomial p2;
+        p2.changeCoefficient(10, 2);
+        CHECK(p1 != p2 );
+    }
+    
+    SECTION("equals copy") {
+        p1.changeCoefficient(10, 1);
+        p1.changeCoefficient(20, 2);
+        Polynomial p2 = p1;
+        CHECK(p1 == p2);
+    }
+    
+    SECTION("equals set") {
+        p1.changeCoefficient(10, 1);
+        p1.changeCoefficient(20, 2);
+        Polynomial p2;
+        p2.changeCoefficient(10, 1);
+        p2.changeCoefficient(20, 2);
+        CHECK(p1 == p2);
+
+    }
+    
     SECTION("single coef") {
         p1.changeCoefficient(10, 0);
         ss << p1;
