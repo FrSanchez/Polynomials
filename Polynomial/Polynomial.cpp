@@ -111,7 +111,7 @@ bool Polynomial::changeCoefficient(double coefficient, int power)
         }
     }
     return false;
-}
+} 
 
 bool operator!=(const Polynomial &p1, const Polynomial &p2)
 {

@@ -75,7 +75,6 @@
 		8CDA61822383057C00ADF527 = {
 			isa = PBXGroup;
 			children = (
-				8CE946BA23846CD2007604C7 /* PolynomialMain */,
 				8CDA618D2383057C00ADF527 /* Polynomial */,
 				8CE946B0238468C0007604C7 /* PolynomialTests */,
 				8CDA618C2383057C00ADF527 /* Products */,
@@ -94,6 +93,7 @@
 		8CDA618D2383057C00ADF527 /* Polynomial */ = {
 			isa = PBXGroup;
 			children = (
+				8CDA618E2383057C00ADF527 /* main.cpp */,
 				8CDA61952383058F00ADF527 /* Term.cpp */,
 				8CDA61962383058F00ADF527 /* Term.hpp */,
 				8CDA6198238305B700ADF527 /* Polynomial.cpp */,
@@ -111,14 +111,6 @@
 				8CE946B1238468C0007604C7 /* main.cpp */,
 			);
 			path = PolynomialTests;
-			sourceTree = "<group>";
-		};
-		8CE946BA23846CD2007604C7 /* PolynomialMain */ = {
-			isa = PBXGroup;
-			children = (
-				8CDA618E2383057C00ADF527 /* main.cpp */,
-			);
-			path = PolynomialMain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
