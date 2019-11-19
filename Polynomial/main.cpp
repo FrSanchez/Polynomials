@@ -25,21 +25,34 @@ int main(int argc, const char * argv[]) {
     p1->changeCoefficient(2, 0);
     
     Polynomial *p2 = new Polynomial(*p1);
-    cout << *p1;
-    cout << *p2;
+    cout << "p1:" << *p1;
+    cout << "p2:" << *p2;
     printEq(*p1, *p2);
     p2->changeCoefficient(-10, 1);
     
     Polynomial *p3 = new Polynomial();
     p3->changeCoefficient(1, 4);
 
-    cout << *p1;
-    cout << *p2;
-    
-    cout << *p1 + *p3;
+    cout << "p1: " << *p1;
+    cout << "p2: " << *p2;
+    cout << "p3: " << *p3;
+    cout << "p1+p3:" << *p1 + *p3;
     
     printEq(*p1, *p2);
         
     delete p1;
+    delete p2;
+    delete p3;
+    
+    p1 = new Polynomial();
+    p1->changeCoefficient(1, 2);
+    p1->changeCoefficient(2, 1);
+    
+    p2 = new Polynomial(*p1);
+    p2->changeCoefficient(10, 0);
+    
+    cout << "p1: " << *p1;
+    cout << "p2: " << *p2;
+    cout<< "p1 * p2 = " << *p1 * *p2;
     return 0;
 }

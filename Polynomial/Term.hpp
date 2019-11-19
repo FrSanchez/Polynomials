@@ -26,7 +26,8 @@ public:
     void setPrev(Term *value) { prev = value; }
     
     friend std::ostream& operator<<(std::ostream &os, const Term &o);
-
+    friend bool operator==(const Term &t1, const Term &t2);
+    friend bool operator!=(const Term &t1, const Term &t2);
 private:
     double coefficient;
     int power;

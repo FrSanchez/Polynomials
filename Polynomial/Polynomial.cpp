@@ -16,11 +16,22 @@ Polynomial::Polynomial()
     head->setPrev(head);
 }
 
+Polynomial::~Polynomial()
+{
+    Term* pos = head->getNext();
+    Term* first=pos;
+    do {
+        Term *t = pos;
+        pos = pos->getNext();
+        delete t;
+    } while(pos != first);
+}
+
 Polynomial::Polynomial(const Polynomial &o) : Polynomial()
 {
     Term* current = o.head->getNext();
     Term* prev = head;
-    while (current != o.head) {
+    while(current != o.head) {
         Term* t = new Term(current->getCoefficient(), current->getPower());
         t->setNext(head);
         t->setPrev(prev);
@@ -29,7 +40,8 @@ Polynomial::Polynomial(const Polynomial &o) : Polynomial()
         
         prev = t;
         current = current->getNext();
-    }
+    };
+    head->setCoefficient(o.head->getCoefficient());
 }
 
 bool Polynomial::insert(Term* pos, double coefficient, int power)
@@ -48,6 +60,7 @@ bool Polynomial::insert(Term* pos, double coefficient, int power)
     }
     return false;
 }
+
 bool Polynomial::remove(Term *pos)
 {
     if (pos && pos != head) {
@@ -61,69 +74,102 @@ bool Polynomial::remove(Term *pos)
     return false;
 }
 
+bool Polynomial::changeCoefficient(Term &term)
+{
+    return changeCoefficient(term.getCoefficient(), term.getPower());
+}
+
 bool Polynomial::changeCoefficient(double coefficient, int power)
 {
-    if (power > 0) {
-        Term* current = head->getNext();
-        while(current)
-        {
-            if (power == current->getPower()) {
-                if (coefficient == 0) {
-                    return remove(current);
-                } else {
-                    current->setCoefficient(coefficient);
-                    return true;
-                }
+    Term* current = head->getNext();
+    while(current)
+    {
+        if (power == current->getPower()) {
+            if (coefficient == 0) {
+                return remove(current);
             } else {
-                if (power > current->getPower()) {
-                    return insert(current, coefficient, power);
-                } else {
-                    current = current->getNext();
-                }
+                current->setCoefficient(coefficient);
+                return true;
+            }
+        } else {
+            if (power > current->getPower()) {
+                return insert(current, coefficient, power);
+            } else {
+                current = current->getNext();
             }
         }
     }
     return false;
 }
 
-bool Polynomial::isEmpty()
-{
-    return head->getNext() == head->getPrev();
-}
-
 bool operator==(const Polynomial &p1, const Polynomial &p2)
 {
-    Term* left;
-    Term* right;
+    Term* left = p1.head->getNext();
+    Term* right = p2.head->getNext();
+    Term* left1 = left;
+    Term* right1 = right;
     
-    for(left = p1.head->getNext(),
-        right = p2.head->getNext();
-        
-        left != p1.head && right != p2.head;
-        
-        left = left->getNext(),
-        right = right->getNext()) {
-        if (left->getCoefficient() != right->getCoefficient() ||
-            left->getPower() != right->getPower())
-            return false;
+    while(*left == *right) {
+        left = left->getNext();
+        right = right->getNext();
+        if (left == left1 && right == right1) {
+            return true;
+        }
     }
-    return true;
+    return false;
 }
 
-Term* advance(Polynomial &res, Term* one, Term* two)
+Term* moveAndCopy(Polynomial &result, Term* one, Term* two)
 {
     while (one->getPower() > two->getPower()) {
-        res.changeCoefficient(one->getCoefficient(), one->getPower());
+        result.changeCoefficient(one->getCoefficient(), one->getPower());
         one = one->getNext();
     }
     return one;
 }
 
-Term* copyTerm(Polynomial &result, Term* term)
+Polynomial Polynomial::operator*(const Polynomial& rhs)
 {
-    result.changeCoefficient(term->getCoefficient(), term->getPower());
-    term = term->getNext();
-    return term;
+    Polynomial result;
+    Term *left = head->getNext();
+    Term *left1 = left;
+    do {
+        Polynomial *tp = new Polynomial();
+        Term *right = rhs.head->getNext();
+        Term *rightf = right;
+        do {
+            double c = left->getCoefficient() * right->getCoefficient();
+            int p = left->getPower() + right->getPower();
+            tp->changeCoefficient(c, p);
+            right = right->getNext();
+        } while(right != rightf);
+        result += *tp;
+        delete tp;
+        left = left->getNext();
+    } while(left != left1);
+    return result;
+}
+
+Polynomial Polynomial::operator+=(const Polynomial& rhs)
+{
+    Term* left = head->getNext();
+    Term* right = rhs.head->getNext();
+    while(left != head && right != rhs.head) {
+        if (left->getPower() == right->getPower()) {
+            changeCoefficient( left->getCoefficient() + right->getCoefficient(), left->getPower());
+            left = left->getNext();
+            right = right->getNext();
+        }
+        while (left->getPower() > right->getPower()) {
+            left = left->getNext();
+        }
+        moveAndCopy(*this, right, left);
+    }
+    for(; right != rhs.head; right = right->getNext()) {
+        changeCoefficient(*right);
+    }
+    head->setCoefficient(head->getCoefficient() + rhs.head->getCoefficient());
+    return *this;
 }
 
 Polynomial Polynomial::operator+(const Polynomial& rhs)
@@ -137,34 +183,35 @@ Polynomial Polynomial::operator+(const Polynomial& rhs)
             left = left->getNext();
             right = right->getNext();
         }
-        left = advance(result, left, right);
-        right = advance(result, right, left);
+        left = moveAndCopy(result, left, right);
+        right = moveAndCopy(result, right, left);
     }
-    while(right != rhs.head) {
-        right = copyTerm(result, right);
+    for(; right != rhs.head; right = right->getNext()) {
+        result.changeCoefficient(*right);
     }
-    while(left != head) {
-        left = copyTerm(result, left);
+    for(; left != head; left = left->getNext()) {
+        result.changeCoefficient(*left);
     }
+    result.head->setCoefficient(head->getCoefficient() + rhs.head->getCoefficient());
     return result;
-
 }
 
 std::ostream& operator<<(std::ostream &os, const Polynomial &o)
 {
     Term* current = o.head->getNext();
+    Term* high = current;
     bool first = true;
-    while(current != o.head) {
+    do {
         os << ' ';
         if (!first) {
-            if(current->getCoefficient() >=0 ) {
+            if(current->getCoefficient() >0 ) {
                 os << '+';
             }
         }
         os << *current;
         first = false;
         current = current->getNext();
-    }
+    } while(current != high);
     os << std::endl;
     return os;
 }

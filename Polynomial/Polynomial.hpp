@@ -21,12 +21,14 @@ class Polynomial
 public:
     Polynomial();
     Polynomial(const Polynomial &o);
+    ~Polynomial();
     
     bool changeCoefficient(double coefficient, int power);
-    Polynomial operator+(const Polynomial& right);
+    bool changeCoefficient(Term &term);
+    Polynomial operator+(const Polynomial& rhs);
+    Polynomial operator+=(const Polynomial& rhs);
+    Polynomial operator*(const Polynomial& rhs);
     
-    bool isEmpty();
-
     friend std::ostream& operator<<(std::ostream &os, const Polynomial &o);
     friend bool operator==(const Polynomial &p1, const Polynomial &p2);
 private:
