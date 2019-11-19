@@ -190,4 +190,28 @@ TEST_CASE("Testing plynomial") {
         ss << p1;
         CHECK(ss.str() == "");
     }
+    
+    SECTION("degree 1") {
+        p1.changeCoefficient(2, 1);
+        p1.changeCoefficient(5, 0);
+        REQUIRE(p1.getDegree() == 1);
+    }
+
+    SECTION("degree 10") {
+        p1.changeCoefficient(2, 10);
+        p1.changeCoefficient(5, 5);
+        p1.changeCoefficient(2, 2);
+        REQUIRE(p1.getDegree() == 10);
+    }
+    
+    SECTION("coeffricients") {
+        p1.changeCoefficient(2, 10);
+        p1.changeCoefficient(5, 5);
+        p1.changeCoefficient(2, 2);
+        int expected[] = {2, 5, 2};
+        std::vector<int> actual = p1.getCoefficients();
+        for(int i=0; i<3; i++) {
+            CHECK(expected[i] == actual[i]);
+        }
+    }
 }

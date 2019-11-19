@@ -224,6 +224,22 @@ Polynomial Polynomial::operator+(const Polynomial& rhs)
     return result+=rhs;
 }
 
+int Polynomial::getDegree()
+{
+    return head->getNext()->getPower();
+}
+
+std::vector<int> Polynomial::getCoefficients()
+{
+    std::vector<int> coefficients;
+    Term* current = head->getNext();
+    do {
+        coefficients.push_back(current->getCoefficient());
+        current = current->getNext();
+    }while(current != head);
+    return coefficients;
+}
+
 std::ostream& operator<<(std::ostream &os, const Polynomial &o)
 {
     Term* current = o.head->getNext();

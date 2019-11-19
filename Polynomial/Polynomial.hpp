@@ -8,12 +8,13 @@
 
 #pragma once
 
-#ifndef Polynomials_
-#define Polynomials_
+#ifndef Polynomial_H
+#define Polynomial_H
 
 /* The classes below are exported */
 #pragma GCC visibility push(default)
 
+#include <vector>
 #include "Term.hpp"
 
 class Polynomial
@@ -30,6 +31,8 @@ public:
     Polynomial operator*(const Polynomial& rhs);
     Polynomial operator*=(const Polynomial& rhs);
     Polynomial operator*=(const double rhs);
+    int getDegree();
+    std::vector<int> getCoefficients();
     
     friend std::ostream& operator<<(std::ostream &os, const Polynomial &o);
     friend bool operator==(const Polynomial &p1, const Polynomial &p2);
