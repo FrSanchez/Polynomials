@@ -31,4 +31,8 @@
 *.out
 *.app
 
-*/xcuserdata
+*.xcuserdata
+Polynomial.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+Polynomial.xcodeproj/project.xcworkspace/xcuserdata/
+Polynomial.xcodeproj/xcshareddata/
+Polynomial.xcodeproj/xcuserdata/

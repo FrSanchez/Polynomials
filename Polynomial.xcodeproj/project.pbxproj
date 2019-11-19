@@ -7,16 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C5E52072383BAFB001247F1 /* poly_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E52062383BAFB001247F1 /* poly_tests.cpp */; };
 		8CDA618F2383057C00ADF527 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA618E2383057C00ADF527 /* main.cpp */; };
 		8CDA61972383058F00ADF527 /* Term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA61952383058F00ADF527 /* Term.cpp */; };
 		8CDA619A238305B700ADF527 /* Polynomial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA6198238305B700ADF527 /* Polynomial.cpp */; };
-		8CDA619E2383714600ADF527 /* test_term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA619D2383714600ADF527 /* test_term.cpp */; };
-		8CDA61A02383725600ADF527 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA619F2383725600ADF527 /* main.cpp */; };
+		8CE946B2238468C0007604C7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CE946B1238468C0007604C7 /* main.cpp */; };
+		8CE946B6238468D2007604C7 /* poly_tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E52062383BAFB001247F1 /* poly_tests.cpp */; };
+		8CE946B7238468D5007604C7 /* test_term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA619D2383714600ADF527 /* test_term.cpp */; };
+		8CE946BB23846CF0007604C7 /* Term.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA61952383058F00ADF527 /* Term.cpp */; };
+		8CE946BC23846CF0007604C7 /* Term.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA61962383058F00ADF527 /* Term.hpp */; };
+		8CE946BD23846CF0007604C7 /* Polynomial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA6198238305B700ADF527 /* Polynomial.cpp */; };
+		8CE946BE23846CF0007604C7 /* Polynomial.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA6199238305B700ADF527 /* Polynomial.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8CDA61892383057C00ADF527 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		8CE946AD238468BF007604C7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -37,11 +50,19 @@
 		8CDA6199238305B700ADF527 /* Polynomial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Polynomial.hpp; sourceTree = "<group>"; };
 		8CDA619C2383712D00ADF527 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		8CDA619D2383714600ADF527 /* test_term.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_term.cpp; sourceTree = "<group>"; };
-		8CDA619F2383725600ADF527 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8CE946AF238468BF007604C7 /* PolynomialTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PolynomialTests; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE946B1238468C0007604C7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8CDA61882383057C00ADF527 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE946AC238468BF007604C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -54,8 +75,9 @@
 		8CDA61822383057C00ADF527 = {
 			isa = PBXGroup;
 			children = (
-				8CDA619B23836F7900ADF527 /* Tests */,
+				8CE946BA23846CD2007604C7 /* PolynomialMain */,
 				8CDA618D2383057C00ADF527 /* Polynomial */,
+				8CE946B0238468C0007604C7 /* PolynomialTests */,
 				8CDA618C2383057C00ADF527 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				8CDA618B2383057C00ADF527 /* Polynomial */,
+				8CE946AF238468BF007604C7 /* PolynomialTests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,7 +94,6 @@
 		8CDA618D2383057C00ADF527 /* Polynomial */ = {
 			isa = PBXGroup;
 			children = (
-				8CDA618E2383057C00ADF527 /* main.cpp */,
 				8CDA61952383058F00ADF527 /* Term.cpp */,
 				8CDA61962383058F00ADF527 /* Term.hpp */,
 				8CDA6198238305B700ADF527 /* Polynomial.cpp */,
@@ -80,15 +102,23 @@
 			path = Polynomial;
 			sourceTree = "<group>";
 		};
-		8CDA619B23836F7900ADF527 /* Tests */ = {
+		8CE946B0238468C0007604C7 /* PolynomialTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CDA619C2383712D00ADF527 /* catch.hpp */,
 				8CDA619D2383714600ADF527 /* test_term.cpp */,
-				8CDA619F2383725600ADF527 /* main.cpp */,
 				8C5E52062383BAFB001247F1 /* poly_tests.cpp */,
+				8CDA619C2383712D00ADF527 /* catch.hpp */,
+				8CE946B1238468C0007604C7 /* main.cpp */,
 			);
-			path = Tests;
+			path = PolynomialTests;
+			sourceTree = "<group>";
+		};
+		8CE946BA23846CD2007604C7 /* PolynomialMain */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA618E2383057C00ADF527 /* main.cpp */,
+			);
+			path = PolynomialMain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +141,23 @@
 			productReference = 8CDA618B2383057C00ADF527 /* Polynomial */;
 			productType = "com.apple.product-type.tool";
 		};
+		8CE946AE238468BF007604C7 /* PolynomialTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CE946B5238468C0007604C7 /* Build configuration list for PBXNativeTarget "PolynomialTests" */;
+			buildPhases = (
+				8CE946AB238468BF007604C7 /* Sources */,
+				8CE946AC238468BF007604C7 /* Frameworks */,
+				8CE946AD238468BF007604C7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PolynomialTests;
+			productName = PolynomialTests;
+			productReference = 8CE946AF238468BF007604C7 /* PolynomialTests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,6 +168,9 @@
 				ORGANIZATIONNAME = "Francisco Sanchez";
 				TargetAttributes = {
 					8CDA618A2383057C00ADF527 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					8CE946AE238468BF007604C7 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
 				};
@@ -139,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				8CDA618A2383057C00ADF527 /* Polynomial */,
+				8CE946AE238468BF007604C7 /* PolynomialTests */,
 			);
 		};
 /* End PBXProject section */
@@ -148,12 +199,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CDA619E2383714600ADF527 /* test_term.cpp in Sources */,
 				8CDA618F2383057C00ADF527 /* main.cpp in Sources */,
 				8CDA61972383058F00ADF527 /* Term.cpp in Sources */,
-				8CDA61A02383725600ADF527 /* main.cpp in Sources */,
 				8CDA619A238305B700ADF527 /* Polynomial.cpp in Sources */,
-				8C5E52072383BAFB001247F1 /* poly_tests.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE946AB238468BF007604C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE946BB23846CF0007604C7 /* Term.cpp in Sources */,
+				8CE946BC23846CF0007604C7 /* Term.hpp in Sources */,
+				8CE946BD23846CF0007604C7 /* Polynomial.cpp in Sources */,
+				8CE946BE23846CF0007604C7 /* Polynomial.hpp in Sources */,
+				8CE946B2238468C0007604C7 /* main.cpp in Sources */,
+				8CE946B6238468D2007604C7 /* poly_tests.cpp in Sources */,
+				8CE946B7238468D5007604C7 /* test_term.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +351,26 @@
 			};
 			name = Release;
 		};
+		8CE946B3238468C0007604C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4WYCGB49MC;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8CE946B4238468C0007604C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4WYCGB49MC;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -306,6 +388,15 @@
 			buildConfigurations = (
 				8CDA61932383057C00ADF527 /* Debug */,
 				8CDA61942383057C00ADF527 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CE946B5238468C0007604C7 /* Build configuration list for PBXNativeTarget "PolynomialTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CE946B3238468C0007604C7 /* Debug */,
+				8CE946B4238468C0007604C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
